@@ -1,11 +1,24 @@
-const express = require('express')
-const app = express()
-const PORT = 5000
+/* eslint-disable no-console */
+const express = require('express');
+const mongoose = require('mongoose');
 
-app.get('/',(req,res) =>{
-    res.send("Mu mei lelo")
+const app = express();
+const PORT = 5000;
+const { MONGOURI } = require('./keys');
+
+mongoose.connect(MONGOURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+mongoose.connection.on('connected', () => {
+  console.log('connected to mongo');
 });
 
-app.listen(PORT,()=>{
-    console.log("Server running on ", PORT)
-})
+mongoose.connection.on('error', (err) => {
+  console.log('error connecting', err);
+});
+
+app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
+  console.log('Server running on ', PORT);
+});
