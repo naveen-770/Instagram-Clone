@@ -11,6 +11,11 @@ const bcrypt = require('bcryptjs');
 const { JWT_SECRET } = require('../keys');
 
 const User = mongoose.model('User');
+const requireLogin = require('../middleware/requireLogin');
+
+router.get('/protected', requireLogin,(req, res) => {
+  res.send('hello user');
+});
 
 // eslint-disable-next-line consistent-return
 router.post('/signup', (req, res) => {
