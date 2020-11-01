@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const { JWT_SECRET } = require('../keys');
@@ -17,7 +18,7 @@ module.exports = (req, res, next) => {
     const { _id } = payload;
     User.findById(_id).then((userdata) => {
       req.user = userdata;
+      next();
     });
-    next();
   });
 };
