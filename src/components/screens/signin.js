@@ -1,15 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const Signup =()=>{
+const Signin =()=>{
     return(
     <div className="mycard">
         <div className="card auth-card input-field">
             <h2>Instagram</h2>
-            <input
-            type="text"
-            placeholder="name"
-            />
             <input
             type="text"
             placeholder="email"
@@ -18,14 +14,14 @@ const Signup =()=>{
             type="text"
             placeholder="password"
             />
-            <button class="btn waves-effect waves-light">SignUp
+            <button class="btn waves-effect waves-light">Login
             </button>
             <h5>
-                <Link to="/signin">Already have a account ?</Link>
+                <Link to="/signup">New Here ?</Link>
             </h5>
       </div>
     </div>
     );
 }
 
-export default Signup
+export default Signin
